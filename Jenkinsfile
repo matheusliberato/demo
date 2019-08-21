@@ -11,7 +11,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("getintodevops/hellonode")
+        app = docker.build("961160187669.dkr.ecr.us-west-2.amazonaws.com/demo")
     }
 
     stage('Test image') {
@@ -28,7 +28,7 @@ node {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
-        docker.withRegistry('961160187669.dkr.ecr.us-west-2.amazonaws.com/demo', 'aws-jenkins') {
+        docker.withRegistry('961160187669.dkr.ecr.us-west-2.amazonaws.com', 'aws-jenkins') {
             app.push("latest")
         }
     }
